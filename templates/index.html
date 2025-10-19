@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select the Node and enter the port channel and link to remove.</title>
+</head>
+<body>
+    <form method="POST" action="{{ url_for('process_data') }}">
+        <label for="node">Node:</label>
+        <select name="node" id="node">
+            {% for n in node %}
+                <option value="{{n}}" SELECTED>{{n}}</option>"
+            {% endfor %}
+        </select>
+        
+
+        <br><br>
+
+        <label for="port_channel">Port Channel:</label>
+        <input type="text" name="port_channel" id="port_channel">
+
+        <label for="interface">Interface:</label>
+        <input type="text" name="interface" id="interface">
+
+        <br><br>
+
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if selected_node and selected_port_channel %}
+        <h3>You selected:</h3>
+        <p><strong>Node:</strong> {{ selected_node }}</p>
+        <p><strong>Port-Channel:</strong> {{ selected_port_channel }}</p>
+    {% endif %}
+</body>
+</html>
